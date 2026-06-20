@@ -1,0 +1,23 @@
+---
+import { withBase } from '../data/seo';
+interface Props { items: { id: string; title: string }[]; currentId: string; }
+const { items, currentId } = Astro.props;
+---
+<nav aria-label="Docs" class="text-sm">
+  <ul class="space-y-1">
+    {items.map((it) => (
+      <li>
+        <a
+          href={withBase(`/docs/${it.id}`)}
+          aria-current={it.id === currentId ? 'page' : undefined}
+          class:list={[
+            'block rounded-lg px-3 py-2',
+            it.id === currentId
+              ? 'bg-blue-50 font-semibold text-brand dark:bg-blue-950/50'
+              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white',
+          ]}
+        >{it.title}</a>
+      </li>
+    ))}
+  </ul>
+</nav>

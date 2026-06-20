@@ -1,0 +1,23 @@
+---
+---
+<div class="prose-doc max-w-none">
+  <slot />
+</div>
+<style is:global>
+  .prose-doc { color: rgb(51 65 85); line-height: 1.7; }
+  .dark .prose-doc { color: rgb(203 213 225); }
+  .prose-doc h2 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.5rem; font-weight: 700; color: rgb(15 23 42); scroll-margin-top: 5rem; }
+  .prose-doc h3 { margin-top: 1.5rem; margin-bottom: .5rem; font-size: 1.2rem; font-weight: 600; color: rgb(15 23 42); }
+  .dark .prose-doc h2, .dark .prose-doc h3 { color: #fff; }
+  .prose-doc p, .prose-doc ul, .prose-doc ol, .prose-doc pre, .prose-doc table { margin-bottom: 1rem; }
+  .prose-doc ul { list-style: disc; padding-left: 1.25rem; }
+  .prose-doc ol { list-style: decimal; padding-left: 1.25rem; }
+  .prose-doc a { color: #2563eb; text-decoration: underline; }
+  .prose-doc code { background: rgb(241 245 249); padding: .1rem .35rem; border-radius: .35rem; font-size: .9em; }
+  .dark .prose-doc code { background: rgb(30 41 59); }
+  .prose-doc pre { background: rgb(15 23 42); color: rgb(226 232 240); padding: 1rem; border-radius: .75rem; overflow-x: auto; }
+  .prose-doc pre code { background: transparent; padding: 0; }
+  .prose-doc table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .prose-doc th, .prose-doc td { border: 1px solid rgb(226 232 240); padding: .5rem .75rem; text-align: left; }
+  .dark .prose-doc th, .dark .prose-doc td { border-color: rgb(51 65 85); }
+</style>

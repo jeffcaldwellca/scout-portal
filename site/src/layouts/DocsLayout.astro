@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import DocsSidebar from '../components/DocsSidebar.astro';
+import Prose from '../components/Prose.astro';
+import { withBase, techArticleLd, howToLd, breadcrumbLd } from '../data/seo';
+
+interface Props {
+  entry: CollectionEntry<'docs'>;
+  allDocs: CollectionEntry<'docs'>[];
+}
+const { entry, allDocs } = Astro.props;
+const { title, description, howTo } = entry.data;
+const path = `/docs/${entry.id}`;
+
+const items = allDocs.map((d) => ({ id: d.id, title: d.data.title }));
+const idx = allDocs.findIndex((d) => d.id === entry.id);
+const prev = idx > 0 ? allDocs[idx - 1] : null;
+const next = idx < allDocs.length - 1 ? allDocs[idx + 1] : null;
+
+const jsonLd: object[] = [
+  techArticleLd({ title, description, path }),
+  breadcrumbLd([
+    { name: 'Home', path: '/' },
+    { name: 'Docs', path: '/docs/overview' },
+    { name: title, path },
+  ]),
+];
+if (howTo) jsonLd.push(howToLd(howTo));
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" jsonLd={jsonLd}>
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[16rem_1fr]">
+    <aside class="md:sticky md:top-20 md:h-max">
+      <details class="md:open" open>
+        <summary class="mb-2 cursor-pointer font-semibold text-slate-900 md:pointer-events-none dark:text-white">Documentation</summary>
+        <DocsSidebar items={items} currentId={entry.id} />
+      </details>
+    </aside>
+    <article>
+      <nav aria-label="Breadcrumb" class="mb-4 text-sm text-slate-500 dark:text-slate-400">
+        <a class="hover:underline" href={withBase('/')}>Home</a> ·
+        <a class="hover:underline" href={withBase('/docs/overview')}>Docs</a> ·
+        <span class="text-slate-700 dark:text-slate-300">{title}</span>
+      </nav>
+      <h1 class="mb-6 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">{title}</h1>
+      <Prose><slot /></Prose>
+      <div class="mt-12 flex justify-between border-t border-slate-200 pt-6 text-sm dark:border-slate-800">
+        {prev ? <a class="text-brand hover:underline" href={withBase(`/docs/${prev.id}`)}>← {prev.data.title}</a> : <span />}
+        {next ? <a class="text-brand hover:underline" href={withBase(`/docs/${next.id}`)}>{next.data.title} →</a> : <span />}
+      </div>
+    </article>
+  </div>
+</BaseLayout>
