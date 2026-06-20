@@ -1,0 +1,28 @@
+---
+import { SITE, withBase } from '../data/seo';
+---
+<section class="mx-auto max-w-6xl px-4 pb-10 pt-16 text-center sm:pt-24">
+  <a href={SITE.repo} class="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+    Free &amp; open-source · GPL v3
+  </a>
+  <h1 class="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+    A friendly customer portal for <span class="text-brand">FreeScout</span>
+  </h1>
+  <p class="mx-auto mt-5 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+    Support Portal is a self-hosted, open-source end-user portal for FreeScout. Give your users a clean
+    form-based way to submit tickets, attach files, and track status — without exposing the agent UI.
+  </p>
+  <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+    <a href={withBase('/docs/installation')} class="rounded-xl bg-brand px-5 py-3 font-semibold text-white shadow-sm hover:bg-brand-dark">Get started</a>
+    <a href={SITE.repo} class="rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800">View on GitHub</a>
+  </div>
+  <div class="mt-14">
+    <img
+      src={withBase('/screenshot.png')}
+      alt="Support Portal showing the request-type selection screen with onboarding, technical problem and change request cards"
+      width="1370" height="527"
+      class="mx-auto w-full max-w-5xl rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800"
+      loading="eager"
+    />
+  </div>
+</section>

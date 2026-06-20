@@ -1,6 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import { FEATURES } from '../data/features';
+import { FAQ_ITEMS } from '../data/faq';
+import { SITE, withBase, softwareApplicationLd, webSiteLd } from '../data/seo';
+
+const steps = [
+  { n: '1', t: 'User submits a request', d: 'They pick a request type and fill in a dynamic form tailored to it.' },
+  { n: '2', t: 'A ticket is created in FreeScout', d: 'The portal calls the FreeScout API and creates the ticket in your mailbox.' },
+  { n: '3', t: 'User tracks and replies', d: 'They watch status updates and reply in a two-way thread from their dashboard.' },
+];
+const jsonLd = [softwareApplicationLd(), webSiteLd()];
 ---
-<BaseLayout title="Home" description="Smoke test" path="/">
-  <h1 class="mx-auto max-w-6xl px-4 py-10 text-3xl font-bold">It builds.</h1>
+<BaseLayout
+  title={SITE.tagline}
+  description={SITE.description}
+  path="/"
+  jsonLd={jsonLd}
+>
+  <Hero />
+
+  <section id="features" class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-center text-3xl font-bold text-slate-900 dark:text-white">Everything your users need</h2>
+    <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600 dark:text-slate-400">A focused front door to FreeScout, built for end users.</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {FEATURES.map((f) => <FeatureCard title={f.title} blurb={f.blurb} icon={f.icon} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-center text-3xl font-bold text-slate-900 dark:text-white">How it works</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {steps.map((s) => (
+        <div class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
+          <div class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand font-bold text-white">{s.n}</div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{s.t}</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <h2 class="text-center text-3xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
+    <div class="mt-8 divide-y divide-slate-200 dark:divide-slate-800">
+      {FAQ_ITEMS.slice(0, 4).map((it) => (
+        <details class="group py-4">
+          <summary class="cursor-pointer list-none font-medium text-slate-900 dark:text-white">{it.q}</summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{it.a}</p>
+        </details>
+      ))}
+    </div>
+    <p class="mt-6 text-center text-sm"><a class="font-semibold text-brand hover:underline" href={withBase('/faq')}>See all FAQs →</a></p>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 text-center">
+    <div class="rounded-3xl bg-slate-900 px-6 py-14 dark:bg-slate-900">
+      <h2 class="text-3xl font-bold text-white">Self-host it in minutes</h2>
+      <p class="mx-auto mt-3 max-w-xl text-slate-300">PHP 8.1+, a FreeScout instance with the API module, and you're live. Docker supported.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href={withBase('/docs/installation')} class="rounded-xl bg-brand px-5 py-3 font-semibold text-white hover:bg-brand-dark">Read the docs</a>
+        <a href={SITE.repo} class="rounded-xl border border-slate-600 px-5 py-3 font-semibold text-white hover:bg-slate-800">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
