@@ -1,0 +1,34 @@
+---
+import { SITE, absUrl } from '../data/seo';
+import JsonLd from './JsonLd.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogType?: string;
+  jsonLd?: object | object[];
+}
+const { title, description, path, ogType = 'website', jsonLd } = Astro.props;
+const canonical = absUrl(path);
+const fullTitle = path === '/' ? `${SITE.shortName} — ${title}` : `${title} — ${SITE.shortName}`;
+const ogImage = absUrl(SITE.ogImage);
+const lds = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={SITE.shortName} />
+<meta property="og:locale" content={SITE.locale} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+{SITE.googleSiteVerification && <meta name="google-site-verification" content={SITE.googleSiteVerification} />}
+{SITE.bingSiteVerification && <meta name="msvalidate.01" content={SITE.bingSiteVerification} />}
+{lds.map((ld) => <JsonLd data={ld} />)}

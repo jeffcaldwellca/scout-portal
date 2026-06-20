@@ -1,0 +1,46 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Seo from '../components/Seo.astro';
+import { withBase } from '../data/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogType?: string;
+  jsonLd?: object | object[];
+}
+const { title, description, path, ogType, jsonLd } = Astro.props;
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32x32.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16x16.png')} />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/site.webmanifest')} />
+    <meta name="theme-color" content="#2563eb" />
+    <script is:inline>
+      (() => {
+        try {
+          const s = localStorage.getItem('sp-theme');
+          const d = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', d);
+        } catch (_) {}
+      })();
+    </script>
+    <Seo title={title} description={description} path={path} ogType={ogType} jsonLd={jsonLd} />
+  </head>
+  <body class="min-h-screen bg-white text-slate-700 antialiased dark:bg-slate-950 dark:text-slate-300">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>

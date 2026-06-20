@@ -1,0 +1,15 @@
+---
+import { SITE, withBase } from '../data/seo';
+const year = new Date().getFullYear();
+---
+<footer class="mt-20 border-t border-slate-200 py-10 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
+  <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 sm:flex-row sm:items-center sm:justify-between">
+    <p>© {year} {SITE.name}. Free &amp; open-source under GPL v3.</p>
+    <nav class="flex gap-4" aria-label="Footer">
+      <a class="hover:text-slate-900 dark:hover:text-white" href={withBase('/docs/overview')}>Docs</a>
+      <a class="hover:text-slate-900 dark:hover:text-white" href={withBase('/faq')}>FAQ</a>
+      <a class="hover:text-slate-900 dark:hover:text-white" href={SITE.repo}>GitHub</a>
+      <a class="hover:text-slate-900 dark:hover:text-white" href="https://freescout.net/">FreeScout</a>
+    </nav>
+  </div>
+</footer>
