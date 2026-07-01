@@ -1,6 +1,6 @@
 ---
 title: Managing Users
-description: Manage local Support Portal accounts via self-service registration or the command-line user management script.
+description: Manage local Scout Portal accounts via self-service registration or the command-line user management script.
 order: 6
 ---
 

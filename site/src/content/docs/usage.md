@@ -1,6 +1,6 @@
 ---
 title: Usage
-description: How end users submit support tickets and track them in Support Portal — request types, attachments, status, and replies.
+description: How end users submit support tickets and track them in Scout Portal — request types, attachments, status, and replies.
 order: 7
 ---
 

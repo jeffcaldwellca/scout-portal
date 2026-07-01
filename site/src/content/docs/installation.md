@@ -1,9 +1,9 @@
 ---
 title: Installation
-description: How to install Support Portal for FreeScout — prerequisites, Composer, environment config, web server setup, and connecting the FreeScout API.
+description: How to install Scout Portal for FreeScout — prerequisites, Composer, environment config, web server setup, and connecting the FreeScout API.
 order: 2
 howTo:
-  name: Install Support Portal for FreeScout
+  name: Install Scout Portal for FreeScout
   description: Install and configure the self-hosted FreeScout customer portal.
   steps:
     - Clone the repository from GitHub.
@@ -53,8 +53,8 @@ The following FreeScout modules are required or optional for full functionality:
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/jeffcaldwellca/support-portal.git
-cd support-portal
+git clone https://github.com/jeffcaldwellca/scout-portal.git
+cd scout-portal
 ```
 
 ## 2. Install dependencies

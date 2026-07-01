@@ -1,12 +1,12 @@
 ---
 title: Overview
-description: Support Portal is a free, self-hosted end-user portal for FreeScout — dynamic ticket forms, LDAP/local auth, file uploads, and a status dashboard.
+description: Scout Portal is a free, self-hosted end-user portal for FreeScout — dynamic ticket forms, LDAP/local auth, file uploads, and a status dashboard.
 order: 1
 ---
 
-## What is Support Portal?
+## What is Scout Portal?
 
-Support Portal is a free, self-hosted, open-source web app that gives your end users a friendly,
+Scout Portal is a free, self-hosted, open-source web app that gives your end users a friendly,
 form-based interface to **FreeScout** (the open-source help desk). Users submit support requests,
 attach files, and track ticket status — without ever seeing the FreeScout agent UI.
 
@@ -28,4 +28,4 @@ end users, with corporate (LDAP/Active Directory) or local authentication.
 ## How it fits together
 
 The portal talks to FreeScout over its REST API. Tickets created in the portal appear in your
-FreeScout mailbox; replies sync both ways. See [Installation](/support-portal/docs/installation) to get started.
+FreeScout mailbox; replies sync both ways. See [Installation](/scout-portal/docs/installation) to get started.

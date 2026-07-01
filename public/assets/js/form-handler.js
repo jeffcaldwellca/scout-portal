@@ -1,4 +1,4 @@
-// Form Handler for Dynamic Support Portal
+// Form Handler for Dynamic Scout Portal
 'use strict';
 
 // Form handler object

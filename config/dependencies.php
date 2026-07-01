@@ -60,8 +60,8 @@ return function (ContainerBuilder $containerBuilder) {
                 'support_phone' => $_ENV['SUPPORT_PHONE'] ?? '+1 (555) 123-4567',
                 'it_contact_email' => $_ENV['IT_CONTACT_EMAIL'] ?? 'it@yourcompany.com',
                 'self_service_url' => $_ENV['SELF_SERVICE_URL'] ?? '',
-                'portal_title' => $_ENV['PORTAL_TITLE'] ?? 'Support Portal',
-                'portal_name' => $_ENV['PORTAL_NAME'] ?? 'Support Portal',
+                'portal_title' => $_ENV['PORTAL_TITLE'] ?? 'Scout Portal',
+                'portal_name' => $_ENV['PORTAL_NAME'] ?? 'Scout Portal',
                 'app_version' => $_ENV['APP_VERSION'] ?? '1.0.0'
             ]);
             

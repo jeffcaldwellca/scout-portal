@@ -1,8 +1,8 @@
-# Support Portal for FreeScout
+# Scout Portal for FreeScout
 
 A web-based support portal that integrates with FreeScout (support ticketing system), providing a user-friendly form interface for submitting and tracking support requests.
 
-![Support Portal Screenshot](screenshot.png)
+![Scout Portal Screenshot](screenshot.png)
 
 ## Features
 
@@ -56,8 +56,8 @@ The following FreeScout modules are required or optional for full functionality:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/jeffcaldwellca/support-portal.git
-cd support-portal
+git clone https://github.com/jeffcaldwellca/scout-portal.git
+cd scout-portal
 ```
 
 ### 2. Install Dependencies
@@ -229,7 +229,7 @@ Customize the appearance of your helpdesk portal:
 COMPANY_NAME="Your Company Inc."
 COMPANY_SHORT_NAME="Your Company"
 PORTAL_TITLE="IT Helpdesk"
-PORTAL_NAME="Support Portal"
+PORTAL_NAME="Scout Portal"
 BRAND_ICON=bi-headset
 USE_LOGO=true
 SUPPORT_EMAIL=support@yourcompany.com

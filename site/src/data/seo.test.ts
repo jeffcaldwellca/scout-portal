@@ -3,22 +3,22 @@ import { absUrl, withBase, faqPageLd, howToLd, breadcrumbLd, softwareApplication
 
 describe('absUrl', () => {
   it('returns base root for "/"', () => {
-    expect(absUrl('/')).toBe('https://jeffcaldwell.ca/support-portal/');
+    expect(absUrl('/')).toBe('https://jeffcaldwell.ca/scout-portal/');
   });
   it('joins a sub path under base', () => {
-    expect(absUrl('/faq')).toBe('https://jeffcaldwell.ca/support-portal/faq');
+    expect(absUrl('/faq')).toBe('https://jeffcaldwell.ca/scout-portal/faq');
   });
   it('normalizes a path without a leading slash', () => {
-    expect(absUrl('docs/overview')).toBe('https://jeffcaldwell.ca/support-portal/docs/overview');
+    expect(absUrl('docs/overview')).toBe('https://jeffcaldwell.ca/scout-portal/docs/overview');
   });
 });
 
 describe('withBase', () => {
   it('prefixes the base path', () => {
-    expect(withBase('/docs/overview')).toBe('/support-portal/docs/overview');
+    expect(withBase('/docs/overview')).toBe('/scout-portal/docs/overview');
   });
   it('returns base root for "/"', () => {
-    expect(withBase('/')).toBe('/support-portal/');
+    expect(withBase('/')).toBe('/scout-portal/');
   });
 });
 
@@ -38,7 +38,7 @@ describe('json-ld builders', () => {
   it('breadcrumbLd numbers positions from 1', () => {
     const ld = breadcrumbLd([{ name: 'Home', path: '/' }, { name: 'FAQ', path: '/faq' }]) as any;
     expect(ld.itemListElement[0].position).toBe(1);
-    expect(ld.itemListElement[1].item).toBe('https://jeffcaldwell.ca/support-portal/faq');
+    expect(ld.itemListElement[1].item).toBe('https://jeffcaldwell.ca/scout-portal/faq');
   });
   it('softwareApplicationLd marks the app as free', () => {
     const ld = softwareApplicationLd() as any;

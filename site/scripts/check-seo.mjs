@@ -38,7 +38,7 @@ for (const file of files) {
   check(title.trim().length > 0, `${rel}: missing <title>`);
   if (title) titles.set(title, (titles.get(title) || 0) + 1);
   check(/<meta name="description" content="[^"]+"/.test(html), `${rel}: missing meta description`);
-  check(/<link rel="canonical" href="https:\/\/jeffcaldwell\.ca\/support-portal/.test(html), `${rel}: missing/invalid canonical`);
+  check(/<link rel="canonical" href="https:\/\/jeffcaldwell\.ca\/scout-portal/.test(html), `${rel}: missing/invalid canonical`);
   check(/<meta property="og:title"/.test(html), `${rel}: missing og:title`);
   check(/<meta property="og:image"/.test(html), `${rel}: missing og:image`);
 }

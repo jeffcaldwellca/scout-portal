@@ -1,6 +1,6 @@
 # Docker Deployment Guide
 
-This guide explains how to deploy the Support Portal using Docker.
+This guide explains how to deploy the Scout Portal using Docker.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ This guide explains how to deploy the Support Portal using Docker.
    ```yaml
    services:
      web:
-       image: jeffcaldwellca/support-portal:latest
+       image: jeffcaldwellca/scout-portal:latest
        # Remove the build section
    ```
 
@@ -136,13 +136,13 @@ docker-compose exec web php bin/manage-local-users.php add <username> <email> <p
 ## Docker Hub
 
 Pre-built images are available on Docker Hub:
-- Repository: `jeffcaldwellca/support-portal`
-- Latest: `jeffcaldwellca/support-portal:latest`
-- Specific versions: `jeffcaldwellca/support-portal:v1.0.0`
+- Repository: `jeffcaldwellca/scout-portal`
+- Latest: `jeffcaldwellca/scout-portal:latest`
+- Specific versions: `jeffcaldwellca/scout-portal:v1.0.0`
 
 Pull the latest image:
 ```bash
-docker pull jeffcaldwellca/support-portal:latest
+docker pull jeffcaldwellca/scout-portal:latest
 ```
 
 ## Production Deployment
@@ -153,7 +153,7 @@ For production environments:
    ```yaml
    services:
      web:
-       image: jeffcaldwellca/support-portal:latest
+       image: jeffcaldwellca/scout-portal:latest
    ```
 
 2. **Use a reverse proxy (nginx/Traefik) for HTTPS:**

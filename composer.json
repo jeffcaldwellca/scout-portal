@@ -1,5 +1,5 @@
 {
-    "name": "support-portal/support-portal",
+    "name": "scout-portal/scout-portal",
     "description": "End user helpdesk form for submitting tickets to FreeScout",
     "type": "project",
     "require": {

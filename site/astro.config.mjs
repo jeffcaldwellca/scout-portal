@@ -4,12 +4,12 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://www.jeffcaldwell.ca',
-  base: '/support-portal',
+  base: '/scout-portal',
   trailingSlash: 'ignore',
   integrations: [
     sitemap({
       serialize(item) {
-        const root = 'https://www.jeffcaldwell.ca/support-portal/';
+        const root = 'https://www.jeffcaldwell.ca/scout-portal/';
         if (item.url !== root) {
           item.url = item.url.replace(/\/$/, '');
         }
