@@ -1,5 +1,5 @@
 {
-  "name": "Scout Portal for FreeScout",
+  "name": "Scout Portal",
   "short_name": "Scout Portal",
   "icons": [
     { "src": "/scout-portal/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },

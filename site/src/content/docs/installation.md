@@ -1,9 +1,9 @@
 ---
 title: Installation
-description: How to install Scout Portal for FreeScout — prerequisites, Composer, environment config, web server setup, and connecting the FreeScout API.
+description: How to install Scout Portal — prerequisites, Composer, environment config, web server setup, and connecting the FreeScout API.
 order: 2
 howTo:
-  name: Install Scout Portal for FreeScout
+  name: Install Scout Portal
   description: Install and configure the self-hosted FreeScout customer portal.
   steps:
     - Clone the repository from GitHub.

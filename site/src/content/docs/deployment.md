@@ -1,6 +1,6 @@
 ---
 title: Docker & Deployment
-description: Deploy Scout Portal for FreeScout with Docker, Apache, or Nginx, and schedule the maintenance cleanup job.
+description: Deploy Scout Portal with Docker, Apache, or Nginx, and schedule the maintenance cleanup job.
 order: 5
 howTo:
   name: Deploy Scout Portal with Docker
