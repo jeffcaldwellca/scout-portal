@@ -1,4 +1,4 @@
-# Scout Portal for FreeScout
+# Scout Portal
 
 > A free, self-hosted, open-source end-user portal for FreeScout. It gives users a clean,
 > form-based interface to submit support tickets, attach files, and track status — with LDAP

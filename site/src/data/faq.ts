@@ -2,7 +2,7 @@ export interface FaqItem { q: string; a: string; }
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: 'What is Scout Portal for FreeScout?',
+    q: 'What is Scout Portal?',
     a: 'Scout Portal is a free, self-hosted, open-source web app that gives your end users a friendly form-based interface to submit support tickets to FreeScout, attach files, and track ticket status — without giving them access to the FreeScout agent UI.',
   },
   {

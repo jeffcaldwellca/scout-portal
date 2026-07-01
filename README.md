@@ -1,4 +1,4 @@
-# Scout Portal for FreeScout
+# Scout Portal
 
 A web-based support portal that integrates with FreeScout (support ticketing system), providing a user-friendly form interface for submitting and tracking support requests.
 
