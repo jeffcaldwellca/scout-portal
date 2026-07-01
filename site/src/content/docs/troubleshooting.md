@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Fix common Support Portal issues — FreeScout API failures, LDAP authentication problems, and file upload errors.
+description: Fix common Scout Portal issues — FreeScout API failures, LDAP authentication problems, and file upload errors.
 order: 8
 ---
 

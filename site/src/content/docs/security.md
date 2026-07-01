@@ -1,6 +1,6 @@
 ---
 title: Security
-description: Support Portal's security model — required CSRF secret, validated uploads, TLS LDAP, login throttling, and hardening headers.
+description: Scout Portal's security model — required CSRF secret, validated uploads, TLS LDAP, login throttling, and hardening headers.
 order: 9
 ---
 

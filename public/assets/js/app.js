@@ -1,4 +1,4 @@
-// Main JavaScript functionality for Support Portal
+// Main JavaScript functionality for Scout Portal
 'use strict';
 
 // Global variables
@@ -340,7 +340,7 @@ const ProgressTracker = {
 
 // Initialize application
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Support Portal - Application initialized');
+    console.log('Scout Portal - Application initialized');
     
     // Initialize Bootstrap tooltips
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));

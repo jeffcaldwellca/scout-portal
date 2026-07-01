@@ -1,12 +1,12 @@
 export const SITE = {
   origin: 'https://jeffcaldwell.ca',
-  base: '/support-portal',
-  name: 'Support Portal for FreeScout',
-  shortName: 'Support Portal',
+  base: '/scout-portal',
+  name: 'Scout Portal for FreeScout',
+  shortName: 'Scout Portal',
   tagline: 'A friendly self-hosted customer portal for FreeScout',
   description:
-    'Support Portal is a free, self-hosted, open-source end-user portal for FreeScout. It gives your users a clean form-based interface to submit support tickets, attach files, and track status — with LDAP or local authentication.',
-  repo: 'https://github.com/jeffcaldwellca/support-portal',
+    'Scout Portal is a free, self-hosted, open-source end-user portal for FreeScout. It gives your users a clean form-based interface to submit support tickets, attach files, and track status — with LDAP or local authentication.',
+  repo: 'https://github.com/jeffcaldwellca/scout-portal',
   ogImage: '/og-image.png',
   locale: 'en_US',
   googleSiteVerification: '',

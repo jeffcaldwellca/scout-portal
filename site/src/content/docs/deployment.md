@@ -1,9 +1,9 @@
 ---
 title: Docker & Deployment
-description: Deploy Support Portal for FreeScout with Docker, Apache, or Nginx, and schedule the maintenance cleanup job.
+description: Deploy Scout Portal for FreeScout with Docker, Apache, or Nginx, and schedule the maintenance cleanup job.
 order: 5
 howTo:
-  name: Deploy Support Portal with Docker
+  name: Deploy Scout Portal with Docker
   description: Run the self-hosted FreeScout portal in production.
   steps:
     - Build or pull the image using the provided Dockerfile.
@@ -31,7 +31,7 @@ Required environment variables (set in `.env` before starting):
 - `FREESCOUT_MAILBOX_ID` — Numeric mailbox ID to submit tickets to
 - `CSRF_SECRET` — Random secret; generate with `php -r "echo bin2hex(random_bytes(32));"`
 
-See [Configuration](/support-portal/docs/configuration) for the full list of environment variables.
+See [Configuration](/scout-portal/docs/configuration) for the full list of environment variables.
 
 ## Apache
 

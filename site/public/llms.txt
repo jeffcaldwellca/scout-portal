@@ -1,4 +1,4 @@
-# Support Portal for FreeScout
+# Scout Portal for FreeScout
 
 > A free, self-hosted, open-source end-user portal for FreeScout. It gives users a clean,
 > form-based interface to submit support tickets, attach files, and track status — with LDAP
@@ -9,12 +9,12 @@
 - Requirements: PHP 8.1+, a FreeScout instance with the API module
 - Authentication: LDAP/Active Directory, local SQLite accounts, or both
 - Deployment: Apache, Nginx, or Docker
-- Repository: https://github.com/jeffcaldwellca/support-portal
+- Repository: https://github.com/jeffcaldwellca/scout-portal
 
 ## Docs
-- Overview: https://jeffcaldwell.ca/support-portal/docs/overview
-- Installation: https://jeffcaldwell.ca/support-portal/docs/installation
-- Configuration: https://jeffcaldwell.ca/support-portal/docs/configuration
-- Authentication: https://jeffcaldwell.ca/support-portal/docs/authentication
-- Docker & Deployment: https://jeffcaldwell.ca/support-portal/docs/deployment
-- FAQ: https://jeffcaldwell.ca/support-portal/faq
+- Overview: https://jeffcaldwell.ca/scout-portal/docs/overview
+- Installation: https://jeffcaldwell.ca/scout-portal/docs/installation
+- Configuration: https://jeffcaldwell.ca/scout-portal/docs/configuration
+- Authentication: https://jeffcaldwell.ca/scout-portal/docs/authentication
+- Docker & Deployment: https://jeffcaldwell.ca/scout-portal/docs/deployment
+- FAQ: https://jeffcaldwell.ca/scout-portal/faq

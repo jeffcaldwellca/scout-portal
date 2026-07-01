@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: support-portal
+    container_name: scout-portal
     restart: unless-stopped
     ports:
       - "8080:80"
@@ -20,7 +20,7 @@ services:
       - APACHE_RUN_GROUP=www-data
       - APACHE_LOG_DIR=/var/log/apache2
     networks:
-      - support-portal-network
+      - scout-portal-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
       interval: 30s
@@ -29,5 +29,5 @@ services:
       start_period: 40s
 
 networks:
-  support-portal-network:
+  scout-portal-network:
     driver: bridge

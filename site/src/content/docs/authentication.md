@@ -1,6 +1,6 @@
 ---
 title: Authentication
-description: Support Portal supports LDAP/Active Directory, local SQLite accounts, or both — with TLS LDAP binds and escaped credentials.
+description: Scout Portal supports LDAP/Active Directory, local SQLite accounts, or both — with TLS LDAP binds and escaped credentials.
 order: 4
 ---
 
@@ -35,4 +35,4 @@ Always bind over TLS (`LDAP_ENCRYPTION=tls`) or LDAPS (`LDAP_ENCRYPTION=ssl`) in
 ## Local accounts & self-service registration
 
 Users can create their own accounts at `/auth/register` when `ENABLE_LOCAL_AUTH=true`.
-See [Managing Users](/support-portal/docs/managing-users) for CLI account management.
+See [Managing Users](/scout-portal/docs/managing-users) for CLI account management.

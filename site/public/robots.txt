@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jeffcaldwell.ca/support-portal/sitemap-index.xml
+Sitemap: https://jeffcaldwell.ca/scout-portal/sitemap-index.xml

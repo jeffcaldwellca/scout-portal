@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Configure Support Portal — FreeScout API and mailbox settings, security and auth environment variables, form fields, and branding.
+description: Configure Scout Portal — FreeScout API and mailbox settings, security and auth environment variables, form fields, and branding.
 order: 3
 ---
 
@@ -37,7 +37,7 @@ Customize the appearance of your helpdesk portal:
 COMPANY_NAME="Your Company Inc."
 COMPANY_SHORT_NAME="Your Company"
 PORTAL_TITLE="IT Helpdesk"
-PORTAL_NAME="Support Portal"
+PORTAL_NAME="Scout Portal"
 BRAND_ICON=bi-headset
 USE_LOGO=true
 SUPPORT_EMAIL=support@yourcompany.com
