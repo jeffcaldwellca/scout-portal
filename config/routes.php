@@ -49,16 +49,32 @@ return function (App $app) {
     
     // Static assets (CSS, JS, Images)
     $app->get('/assets/{path:.*}', function ($request, $response, $args) {
-        $path = $args['path'];
-        $filePath = __DIR__ . '/../public/assets/' . $path;
-        
-        if (!file_exists($filePath) || !is_file($filePath)) {
+        // Resolve the real path and require it to stay inside public/assets, so
+        // "../" sequences (including percent-encoded ones) can't read .env etc.
+        $assetsDir = realpath(__DIR__ . '/../public/assets');
+        $filePath = realpath($assetsDir . '/' . $args['path']);
+
+        if ($filePath === false || !str_starts_with($filePath, $assetsDir . DIRECTORY_SEPARATOR) || !is_file($filePath)) {
             return $response->withStatus(404);
         }
         
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mimeType = finfo_file($finfo, $filePath);
-        finfo_close($finfo);
+        // finfo can't identify text assets (CSS comes back as text/x-asm), and
+        // browsers refuse mislabeled CSS/JS under X-Content-Type-Options: nosniff.
+        $textTypes = [
+            'css' => 'text/css',
+            'js' => 'text/javascript',
+            'json' => 'application/json',
+            'webmanifest' => 'application/manifest+json',
+            'svg' => 'image/svg+xml',
+        ];
+        $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+        if (isset($textTypes[$extension])) {
+            $mimeType = $textTypes[$extension];
+        } else {
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mimeType = finfo_file($finfo, $filePath);
+            finfo_close($finfo);
+        }
         
         $response->getBody()->write(file_get_contents($filePath));
         return $response->withHeader('Content-Type', $mimeType);
