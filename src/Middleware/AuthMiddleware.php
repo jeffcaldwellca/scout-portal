@@ -11,6 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Psr7\Response;
 use Slim\Routing\RouteContext;
 use HelpdeskForm\Services\DatabaseService;
+use HelpdeskForm\Support\BasePath;
 
 class AuthMiddleware implements MiddlewareInterface
 {
@@ -107,6 +108,6 @@ class AuthMiddleware implements MiddlewareInterface
         $response = new Response();
         return $response
             ->withStatus(302)
-            ->withHeader('Location', '/auth/login');
+            ->withHeader('Location', BasePath::url('/auth/login'));
     }
 }

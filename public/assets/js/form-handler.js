@@ -377,7 +377,7 @@ const FormHandler = {
     autosave: function() {
         const formData = this.getFormData();
         
-        HelpDesk.Utils.apiRequest('/api/autosave', {
+        HelpDesk.Utils.apiRequest(HelpDesk.Utils.url('/api/autosave'), {
             method: 'POST',
             body: JSON.stringify({
                 request_type: this.config.requestType,

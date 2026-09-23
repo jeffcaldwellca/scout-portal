@@ -10,7 +10,7 @@
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
                         {% if branding.use_logo|default(true) %}
-                            <img src="/assets/img/logo.png" alt="{{ branding.company_name }}" style="max-width: 120px; height: auto;" class="mb-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <img src="{{ base_path }}/assets/img/logo.png" alt="{{ branding.company_name }}" style="max-width: 120px; height: auto;" class="mb-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             <i class="{{ branding.brand_icon }} text-primary" style="font-size: 3rem; display:none;"></i>
                         {% else %}
                             <i class="{{ branding.brand_icon }} text-primary" style="font-size: 3rem;"></i>
@@ -47,11 +47,11 @@
                     {% if success %}
                     <div class="alert alert-success" role="alert">
                         <i class="bi bi-check-circle me-2"></i>
-                        Account created successfully! You can now <a href="/auth/login" class="alert-link">sign in</a>.
+                        Account created successfully! You can now <a href="{{ base_path }}/auth/login" class="alert-link">sign in</a>.
                     </div>
                     {% else %}
                     
-                    <form method="post" action="/auth/register" class="needs-validation" novalidate>
+                    <form method="post" action="{{ base_path }}/auth/register" class="needs-validation" novalidate>
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                         
                         <div class="row">
@@ -217,7 +217,7 @@
                     <div class="text-center">
                         <small class="text-muted">
                             Already have an account? 
-                            <a href="/auth/login" class="text-decoration-none">Sign in here</a>
+                            <a href="{{ base_path }}/auth/login" class="text-decoration-none">Sign in here</a>
                         </small>
                     </div>
                 </div>

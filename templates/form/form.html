@@ -97,7 +97,7 @@
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex align-items-center mb-3">
-                <a href="/" class="btn btn-outline-secondary me-3">
+                <a href="{{ base_path }}/" class="btn btn-outline-secondary me-3">
                     <i class="bi bi-arrow-left"></i>
                     Back
                 </a>
@@ -314,5 +314,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-<script src="/assets/js/form-handler.js"></script>
+<script src="{{ base_path }}/assets/js/form-handler.js"></script>
 {% endblock %}

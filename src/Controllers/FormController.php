@@ -12,6 +12,7 @@ use HelpdeskForm\Services\DatabaseService;
 use HelpdeskForm\Services\FreeScoutService;
 use HelpdeskForm\Services\FileUploadService;
 use HelpdeskForm\Exceptions\UserFacingException;
+use HelpdeskForm\Support\BasePath;
 
 class FormController
 {
@@ -197,7 +198,7 @@ class FormController
                     'success' => true,
                     'ticket_id' => $ticketId,
                     'submission_uuid' => $submissionUuid,
-                    'redirect_url' => '/form/success/' . $submissionUuid
+                    'redirect_url' => BasePath::url('/form/success/' . $submissionUuid)
                 ]);
                 
                 $response->getBody()->write($payload);
@@ -438,7 +439,7 @@ class FormController
             // Redirect back to ticket page
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', "/ticket/{$ticketId}?reply=success");
+                ->withHeader('Location', BasePath::url("/ticket/{$ticketId}?reply=success"));
 
         } catch (\Exception $e) {
             $this->logger->error('Failed to add reply to ticket', [

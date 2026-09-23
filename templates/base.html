@@ -6,10 +6,10 @@
     <title>{% block title %}{{ branding.portal_name }}{% endblock %} - {{ branding.company_name }}</title>
     
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
-    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ base_path }}/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ base_path }}/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="{{ base_path }}/assets/site.webmanifest">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,18 +17,18 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <link href="/assets/css/app.css" rel="stylesheet">
+    <link href="{{ base_path }}/assets/css/app.css" rel="stylesheet">
     
     {% block head %}{% endblock %}
 </head>
-<body>
+<body data-base-path="{{ base_path }}">
     <!-- Navigation -->
     {% if user %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
+            <a class="navbar-brand d-flex align-items-center" href="{{ base_path }}/">
                 {% if branding.use_logo|default(true) %}
-                    <img src="/assets/img/logo-white.png" alt="{{ branding.company_name }}" height="32" class="me-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                    <img src="{{ base_path }}/assets/img/logo-white.png" alt="{{ branding.company_name }}" height="32" class="me-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                     <i class="{{ branding.brand_icon }} me-2" style="display:none;"></i>
                 {% else %}
                     <i class="{{ branding.brand_icon }} me-2"></i>
@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">
+                        <a class="nav-link active" href="{{ base_path }}/">
                             <i class="bi bi-house me-1"></i>
                             Home
                         </a>
@@ -60,7 +60,7 @@
                             <li><span class="dropdown-item-text small text-muted">{{ user.email }}</span></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form method="post" action="/auth/logout" class="d-inline">
+                                <form method="post" action="{{ base_path }}/auth/logout" class="d-inline">
                                     <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                                     <button type="submit" class="dropdown-item">
                                         <i class="bi bi-box-arrow-right me-1"></i>
@@ -126,7 +126,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- Custom JS -->
-    <script src="/assets/js/app.js"></script>
+    <script src="{{ base_path }}/assets/js/app.js"></script>
     
     {% block scripts %}{% endblock %}
 </body>

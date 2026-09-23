@@ -138,7 +138,7 @@ docker-compose exec web php bin/manage-local-users.php add <username> <email> <p
 Pre-built images are available on Docker Hub:
 - Repository: `jeffcaldwellca/scout-portal`
 - Latest: `jeffcaldwellca/scout-portal:latest`
-- Specific versions: `jeffcaldwellca/scout-portal:1.0.0`
+- Specific versions: `jeffcaldwellca/scout-portal:2.0.0`
 
 Pull the latest image:
 ```bash
@@ -164,6 +164,10 @@ For production environments:
          - "80"
        # Remove the ports mapping
    ```
+
+   To serve the portal at a path such as `https://yourdomain.com/portal`, proxy
+   `/portal/` to the container and set `BASE_PATH=/portal` in `.env`. The proxy
+   can pass the prefix through or strip it; both work.
 
 2. **Set production environment variables:**
    ```env

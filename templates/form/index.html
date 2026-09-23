@@ -71,7 +71,7 @@
                     </p>
                     
                     <div class="mt-auto">
-                        <a href="/form/{{ type }}" class="btn btn-outline-primary w-100">
+                        <a href="{{ base_path }}/form/{{ type }}" class="btn btn-outline-primary w-100">
                             <i class="bi bi-arrow-right me-2"></i>
                             Start Request
                         </a>
@@ -126,7 +126,7 @@
                                         <small class="text-muted">{{ ticket.updatedAt|date('M d, Y g:i A') }}</small>
                                     </td>
                                     <td>
-                                        <a href="/ticket/{{ ticket.id }}" class="btn btn-sm btn-outline-primary">
+                                        <a href="{{ base_path }}/ticket/{{ ticket.id }}" class="btn btn-sm btn-outline-primary">
                                             <i class="bi bi-eye me-1"></i> View
                                         </a>
                                     </td>
@@ -226,7 +226,7 @@ document.querySelectorAll('.request-type-card').forEach(card => {
     // Make entire card clickable
     card.addEventListener('click', function() {
         const type = this.dataset.type;
-        window.location.href = `/form/${type}`;
+        window.location.href = HelpDesk.Utils.url(`/form/${type}`);
     });
 });
 </script>
