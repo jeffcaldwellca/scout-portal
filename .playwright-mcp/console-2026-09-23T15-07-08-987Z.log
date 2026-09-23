@@ -1,4 +1,0 @@
-[     227ms] [LOG] Scout Portal - Application initialized @ http://localhost:18080/portal/assets/js/app.js:348
-[    4638ms] [LOG] Scout Portal - Application initialized @ http://localhost:18080/portal/assets/js/app.js:348
-[    6878ms] [LOG] Scout Portal - Application initialized @ http://localhost:18080/portal/assets/js/app.js:348
-[    6878ms] [LOG] FormHandler initialized with config: {requestType: problem, fields: Array(11), settings: Object, autosaveInterval: 30000, autosavedData: Array(0)} @ http://localhost:18080/portal/assets/js/form-handler.js:12
