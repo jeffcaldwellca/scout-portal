@@ -15,15 +15,15 @@
     "verify": "npm run build && npm run check:seo"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.2.8",
-    "@tailwindcss/vite": "^4.3.1",
-    "astro": "^6.4.7",
-    "tailwindcss": "^4.3.1"
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.4",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "sharp": "^0.35.2",
-    "vitest": "^4.1.9"
+    "sharp": "^0.35.4",
+    "vitest": "^4.1.11"
   },
   "overrides": {
     "esbuild": "^0.28.1"
