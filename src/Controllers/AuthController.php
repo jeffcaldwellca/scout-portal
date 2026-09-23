@@ -10,6 +10,7 @@ use Psr\Log\LoggerInterface;
 use HelpdeskForm\Services\LdapService;
 use HelpdeskForm\Services\LocalAuthService;
 use HelpdeskForm\Services\DatabaseService;
+use HelpdeskForm\Support\BasePath;
 
 class AuthController
 {
@@ -54,7 +55,7 @@ class AuthController
         if (($_ENV['DISABLE_AUTH'] ?? '') === 'true') {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', BasePath::url('/'));
         }
         
         // Check if already logged in
@@ -62,7 +63,7 @@ class AuthController
         if ($sessionId && $this->databaseService->getSession($sessionId)) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', BasePath::url('/'));
         }
         
         $error = $request->getQueryParams()['error'] ?? null;
@@ -86,20 +87,20 @@ class AuthController
         if (empty($username) || empty($password)) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=missing_credentials');
+                ->withHeader('Location', BasePath::url('/auth/login?error=missing_credentials'));
         }
         
         // Validate auth method is enabled
         if ($authMethod === 'ldap' && !$this->enableLdap) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=ldap_disabled');
+                ->withHeader('Location', BasePath::url('/auth/login?error=ldap_disabled'));
         }
 
         if ($authMethod === 'local' && !$this->enableLocalAuth) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=local_auth_disabled');
+                ->withHeader('Location', BasePath::url('/auth/login?error=local_auth_disabled'));
         }
 
         // Throttle brute-force attempts (keyed on username + client IP).
@@ -108,7 +109,7 @@ class AuthController
             $this->logger->warning('Login blocked: too many attempts', ['username' => $username]);
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=too_many_attempts');
+                ->withHeader('Location', BasePath::url('/auth/login?error=too_many_attempts'));
         }
 
         try {
@@ -129,7 +130,7 @@ class AuthController
                 $this->logger->warning('Failed login attempt', ['username' => $username, 'method' => $authMethod]);
                 return $response
                     ->withStatus(302)
-                    ->withHeader('Location', '/auth/login?error=invalid_credentials');
+                    ->withHeader('Location', BasePath::url('/auth/login?error=invalid_credentials'));
             }
 
             // Successful login clears the throttle counter.
@@ -148,7 +149,7 @@ class AuthController
             // Set cookie and redirect
             $response = $response
                 ->withStatus(302)
-                ->withHeader('Location', '/')
+                ->withHeader('Location', BasePath::url('/'))
                 ->withHeader('Set-Cookie', $this->buildSessionCookie($sessionId, self::SESSION_LIFETIME, $request));
 
             return $response;
@@ -162,7 +163,7 @@ class AuthController
             
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=system_error');
+                ->withHeader('Location', BasePath::url('/auth/login?error=system_error'));
         }
     }
     
@@ -177,7 +178,7 @@ class AuthController
         
         return $response
             ->withStatus(302)
-            ->withHeader('Location', '/auth/login')
+            ->withHeader('Location', BasePath::url('/auth/login'))
             ->withHeader('Set-Cookie', $this->buildSessionCookie('', 0, $request));
     }
     
@@ -187,14 +188,14 @@ class AuthController
         if (!$this->enableLocalAuth) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=registration_disabled');
+                ->withHeader('Location', BasePath::url('/auth/login?error=registration_disabled'));
         }
         
         // If authentication is disabled, redirect to main form
         if (($_ENV['DISABLE_AUTH'] ?? '') === 'true') {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', BasePath::url('/'));
         }
         
         // Check if already logged in
@@ -202,7 +203,7 @@ class AuthController
         if ($sessionId && $this->databaseService->getSession($sessionId)) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', BasePath::url('/'));
         }
         
         $error = $request->getQueryParams()['error'] ?? null;
@@ -221,7 +222,7 @@ class AuthController
         if (!$this->enableLocalAuth) {
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/login?error=registration_disabled');
+                ->withHeader('Location', BasePath::url('/auth/login?error=registration_disabled'));
         }
         
         $data = $request->getParsedBody();
@@ -283,7 +284,7 @@ class AuthController
             // Redirect to success page
             return $response
                 ->withStatus(302)
-                ->withHeader('Location', '/auth/register?success=1');
+                ->withHeader('Location', BasePath::url('/auth/register?success=1'));
             
         } catch (\RuntimeException $e) {
             // Handle specific errors from service
@@ -341,7 +342,7 @@ class AuthController
      */
     private function buildSessionCookie(string $sessionId, int $maxAge, ServerRequestInterface $request): string
     {
-        $cookie = "helpdesk_session={$sessionId}; Path=/; HttpOnly; SameSite=Strict; Max-Age={$maxAge}";
+        $cookie = "helpdesk_session={$sessionId}; Path=" . (BasePath::get() ?: '/') . "; HttpOnly; SameSite=Strict; Max-Age={$maxAge}";
 
         $cookieSecure = strtolower($_ENV['COOKIE_SECURE'] ?? 'true');
         $isHttps = strtolower($request->getUri()->getScheme()) === 'https';

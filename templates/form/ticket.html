@@ -20,7 +20,7 @@
     <!-- Back to Tickets -->
     <div class="row mb-3">
         <div class="col-12">
-            <a href="/" class="btn btn-sm btn-outline-secondary">
+            <a href="{{ base_path }}/" class="btn btn-sm btn-outline-secondary">
                 <i class="bi bi-arrow-left me-1"></i> Back to My Tickets
             </a>
         </div>
@@ -79,7 +79,7 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <form id="replyForm" method="POST" action="/ticket/{{ ticket.id }}/reply" enctype="multipart/form-data">
+                    <form id="replyForm" method="POST" action="{{ base_path }}/ticket/{{ ticket.id }}/reply" enctype="multipart/form-data">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                         <div class="mb-3">
                             <label for="reply_message" class="form-label">Your Message</label>

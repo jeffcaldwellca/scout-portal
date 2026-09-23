@@ -7,6 +7,7 @@ use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\ResponseEmitter;
 use HelpdeskForm\Middleware\SecurityHeadersMiddleware;
 use HelpdeskForm\Middleware\ValidationMiddleware;
+use HelpdeskForm\Support\BasePath;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -36,7 +37,8 @@ $container = $containerBuilder->build();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-// Set base path to empty (we're using built-in server at root)
+// Routes are matched against app paths; BASE_PATH is stripped from the
+// request below, so Slim's own base path stays empty.
 $app->setBasePath('');
 
 // Middleware is executed in LIFO order (last added runs first / outermost).
@@ -64,6 +66,11 @@ $routes($app);
 // Run the application
 $serverRequestCreator = ServerRequestCreatorFactory::create();
 $request = $serverRequestCreator->createServerRequestFromGlobals();
+
+// When served under a subpath (BASE_PATH=/portal), strip the prefix so routes
+// and middleware see '/auth/login' rather than '/portal/auth/login'.
+$uri = $request->getUri();
+$request = $request->withUri($uri->withPath(BasePath::strip($uri->getPath())));
 
 $response = $app->handle($request);
 $responseEmitter = new ResponseEmitter();

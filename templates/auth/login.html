@@ -10,7 +10,7 @@
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
                         {% if branding.use_logo|default(true) %}
-                            <img src="/assets/img/logo.png" alt="{{ branding.company_name }}" style="max-width: 120px; height: auto;" class="mb-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <img src="{{ base_path }}/assets/img/logo.png" alt="{{ branding.company_name }}" style="max-width: 120px; height: auto;" class="mb-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             <i class="{{ branding.brand_icon }} text-primary" style="font-size: 3rem; display:none;"></i>
                         {% else %}
                             <i class="{{ branding.brand_icon }} text-primary" style="font-size: 3rem;"></i>
@@ -40,7 +40,7 @@
                     </div>
                     {% endif %}
                     
-                    <form method="post" action="/auth/login" class="needs-validation" novalidate>
+                    <form method="post" action="{{ base_path }}/auth/login" class="needs-validation" novalidate>
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                         
                         {% if show_auth_method_selector %}
@@ -134,7 +134,7 @@
                     <div class="text-center mt-3">
                         <small class="text-muted">
                             Don't have a local account? 
-                            <a href="/auth/register" class="text-decoration-none">
+                            <a href="{{ base_path }}/auth/register" class="text-decoration-none">
                                 <i class="bi bi-person-plus me-1"></i>Create one here
                             </a>
                         </small>

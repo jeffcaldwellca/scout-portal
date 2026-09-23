@@ -7,6 +7,12 @@ let formValidationTimer;
 
 // Utility functions
 const Utils = {
+    // Prefix an app path with the base path the portal is served under
+    // (set from BASE_PATH on <body data-base-path>), e.g. '/portal/auth/login'
+    url: function(path) {
+        return (document.body.dataset.basePath || '') + path;
+    },
+
     // Show loading overlay
     showLoading: function() {
         document.getElementById('loadingOverlay').classList.remove('d-none');
@@ -129,7 +135,7 @@ const Auth = {
 
     // Redirect to login
     redirectToLogin: function() {
-        window.location.href = '/auth/login';
+        window.location.href = Utils.url('/auth/login');
     }
 };
 
@@ -370,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Initialize logout form handling
-    const logoutForms = document.querySelectorAll('form[action="/auth/logout"]');
+    const logoutForms = document.querySelectorAll('form[action$="/auth/logout"]');
     logoutForms.forEach(function(form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();

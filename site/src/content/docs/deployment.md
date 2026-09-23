@@ -1,6 +1,6 @@
 ---
 title: Docker & Deployment
-description: Deploy Scout Portal with Docker, Apache, or Nginx, and schedule the maintenance cleanup job.
+description: Deploy Scout Portal with Docker, Apache, or Nginx, at a domain root or a subpath, and schedule the maintenance cleanup job.
 order: 5
 howTo:
   name: Deploy Scout Portal with Docker
@@ -86,6 +86,65 @@ server {
     }
 }
 ```
+
+## Serving from a subpath (e.g. `/portal`)
+
+The portal can share a domain with another site, such as FreeScout itself, at a
+path like `https://helpdesk.yourdomain.com/portal`. Set the path in `.env`:
+
+```env
+BASE_PATH=/portal
+```
+
+Then map that path to the portal's `public/` directory. Keep the rest of the
+existing site's configuration as it is.
+
+**Nginx** (inside the existing `server` block, above its `location /`):
+
+```nginx
+location = /portal {
+    return 301 /portal/;
+}
+
+location ^~ /portal/ {
+    alias /var/www/portal/public/;
+    try_files $uri @portal;
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME /var/www/portal/public/index.php;
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+    }
+}
+
+location @portal {
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME /var/www/portal/public/index.php;
+    fastcgi_param SCRIPT_NAME /portal/index.php;
+    fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+}
+```
+
+The `^~` modifier matters: it stops the existing site's `location ~ \.php$`
+block from handling portal requests.
+
+**Apache** (inside the existing `VirtualHost`):
+
+```apache
+Alias /portal /var/www/portal/public
+
+<Directory /var/www/portal/public>
+    AllowOverride All
+    Require all granted
+</Directory>
+```
+
+**Reverse proxy to the Docker container:** forward `/portal/` to the container
+and set `BASE_PATH=/portal` in its `.env`. The portal accepts requests whether or
+not the proxy strips the prefix.
+
+In every case, point the web server at the portal's `public/` directory, never at
+the repository root. Otherwise `.env` and the `data/` database would be downloadable.
 
 ## Maintenance (cleanup cron)
 

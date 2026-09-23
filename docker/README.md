@@ -165,6 +165,10 @@ For production environments:
        # Remove the ports mapping
    ```
 
+   To serve the portal at a path such as `https://yourdomain.com/portal`, proxy
+   `/portal/` to the container and set `BASE_PATH=/portal` in `.env`. The proxy
+   can pass the prefix through or strip it; both work.
+
 2. **Set production environment variables:**
    ```env
    APP_DEBUG=false

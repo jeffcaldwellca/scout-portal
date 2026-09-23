@@ -17,6 +17,7 @@ use HelpdeskForm\Services\FileUploadService;
 use HelpdeskForm\Controllers\FormController;
 use HelpdeskForm\Controllers\AuthController;
 use HelpdeskForm\Controllers\ApiController;
+use HelpdeskForm\Support\BasePath;
 
 return function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
@@ -49,8 +50,12 @@ return function (ContainerBuilder $containerBuilder) {
                 'debug' => ($_ENV['APP_DEBUG'] ?? '') === 'true'
             ]);
             
-            // Add global branding variables
             $environment = $twig->getEnvironment();
+
+            // Prefix for every app URL in templates, e.g. "{{ base_path }}/auth/login"
+            $environment->addGlobal('base_path', BasePath::get());
+
+            // Add global branding variables
             $environment->addGlobal('branding', [
                 'company_name' => $_ENV['COMPANY_NAME'] ?? 'Your Company Inc.',
                 'company_short_name' => $_ENV['COMPANY_SHORT_NAME'] ?? 'Your Company',

@@ -24,6 +24,12 @@ number in the URL (e.g. `/mailboxes/1/edit` means ID `1`). You can also call `GE
 | `COOKIE_SECURE` | No | `true` | Adds the `Secure` flag to the session cookie. Set `false` only for local HTTP dev. |
 | `LDAP_ENCRYPTION` | No | `tls` | LDAP transport: `tls` (StartTLS), `ssl` (LDAPS), or `none`. Avoid `none` outside trusted networks. |
 
+## Application environment variables
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `BASE_PATH` | No | empty | URL path the portal is served under, e.g. `/portal`. Leave empty when the portal has its own (sub)domain. See [Serving from a subpath](/scout-portal/docs/deployment#serving-from-a-subpath-eg-portal). |
+
 ## Form fields
 
 Form fields are defined in `config/form_fields.yaml`. Configure how fields map to FreeScout in
