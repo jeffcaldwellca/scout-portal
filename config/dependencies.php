@@ -67,7 +67,7 @@ return function (ContainerBuilder $containerBuilder) {
                 'self_service_url' => $_ENV['SELF_SERVICE_URL'] ?? '',
                 'portal_title' => $_ENV['PORTAL_TITLE'] ?? 'Scout Portal',
                 'portal_name' => $_ENV['PORTAL_NAME'] ?? 'Scout Portal',
-                'app_version' => $_ENV['APP_VERSION'] ?? '1.0.0'
+                'app_version' => $_ENV['APP_VERSION'] ?? '2.0.0'
             ]);
             
             return $twig;

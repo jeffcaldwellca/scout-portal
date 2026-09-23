@@ -40,7 +40,7 @@ return function (App $app) {
         $data = [
             'status' => 'ok',
             'timestamp' => time(),
-            'version' => '1.0.0'
+            'version' => '2.0.0'
         ];
         
         $response->getBody()->write(json_encode($data));
